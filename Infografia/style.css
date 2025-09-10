@@ -508,7 +508,8 @@ h3 {
 .about-col p {
   padding: 15px 0 25px;
   font-size: 120%;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: justify;
 }
 
 .green-btn {
@@ -816,3 +817,53 @@ h3 {
   width: 80%;
   text-align: center;
 }
+
+/*---------- Category: History ----------*/
+
+.subHis-header {
+  height: 50vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(images/El_origen_y_evolucion.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+
+.content-His {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-col p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Gill Sans';
+}
+
+.history1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Gill Sans';
+}
+
+.history1 h2{
+  text-align: center;
+  color: #004d40; 
+  border-bottom: 2px solid #004d40; 
+  padding-bottom: 5px;
+}
+
+.history1 b{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00796b;
+}
+
