@@ -867,3 +867,237 @@ h3 {
   color: #00796b;
 }
 
+/*---------Jugadores----------*/
+
+.global-styles {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.3s ease-in-out;
+  background: #ffffff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.subPlayer-header {
+  height: 50vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(images/jugadores.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #ffffff;
+}
+
+.card {
+  width: 250px;
+  height: 370px;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-in-out;
+  
+}
+
+.card {
+  position: relative; 
+  overflow: hidden; 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); 
+  transform: skewX(-30deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover::after {
+  left: 100%; 
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  transition: transform 0.3s ease-in-out; /* Transición para la imagen */
+}
+
+.card:hover img {
+  transform: scale(1.05); /* Agranda la imagen un 5% */
+}
+
+.card.blue {
+  background: linear-gradient(135deg, #09AFFF, #03283a);
+}
+
+.card.blue img{
+  width: 200px;
+  height: auto;
+}
+
+.card.yellow {
+  background: linear-gradient(135deg, #dbf211, #ac870d);
+}
+
+.card.yellow img{
+  width: 155px;
+  height: auto;
+}
+
+/*green*/
+
+.card.green {
+  background: linear-gradient(135deg, #11f22f, #066435);
+}
+
+.card.green img{
+  width: 155px;
+  height: auto;
+}
+
+/*yellow2*/
+
+.card.yellow2 {
+  background: linear-gradient(135deg, #d0f211, #406406);
+}
+
+.card.yellow2 img{
+  width: auto;
+  height: 215px;
+}
+
+/*red*/
+
+.card.red {
+  background: linear-gradient(135deg, #ff0000, #d18787);
+}
+
+.card.red img{
+  width: 195px;
+  height: auto;
+}
+
+/*red2*/
+
+.card.red2 {
+  background: linear-gradient(135deg, #ff4141, #640606);
+}
+
+.card.red2 img{
+  width: 155px;
+  height: auto;
+}
+
+/*red3*/
+
+.card.red3 {
+  background: linear-gradient(135deg, #ff0000, #07c5ff);
+}
+
+.card.red3 img{
+  width: 205px;
+  height: auto;
+}
+
+/*red4*/
+
+.card.red4 {
+  background: linear-gradient(135deg, #290000, #ff0000);
+}
+
+.card.red4 img{
+  width: 155px;
+  height: auto;
+}
+
+/*orange*/
+
+.card.orange {
+  background: linear-gradient(135deg, #ff9100, #b93500);
+}
+
+.card.orange img{
+  width: 205px;
+  height: auto;
+}
+
+/*white*/
+
+.card.white {
+  background: linear-gradient(135deg, #ffc524, #ffffff);
+}
+
+.card.white img{
+  width: 195px;
+  height: auto;
+}
+
+/*blue2*/
+
+.card.blue2 {
+  background: linear-gradient(135deg, #2457ff, #ffffff);
+}
+
+.card.blue2 img{
+  width: 195px;
+  height: auto;
+}
+
+/*Blue3*/
+
+.card.blue3 {
+  background: linear-gradient(135deg, #2483ff, #4400ff);
+}
+
+.card.blue3 img{
+  width: 195px;
+  height: auto;
+}
+
+
+.card .product {
+  height: 85%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.product .number {
+  font-size: 70px;
+  line-height: 80px;
+  font-style: italic;
+  opacity: 0.25;
+}
+
+.product .sneakers {
+  font-size: 35px;
+  line-height: 50px;
+  font-style: italic;
+  opacity: 1.17;
+}
+
+/* Para pantallas medianas (tablets) */
+@media (min-width: 768px) {
+  .global-styles {
+    gap: 50px; /* Aumenta el espacio */
+  }
+}
+
+/*Torneos*/
