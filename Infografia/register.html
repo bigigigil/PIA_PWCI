@@ -1,49 +1,386 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="estilo.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registrar sesión</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --card: #87aa09;
+            --accent: #06d44b;
+            --muted: #6cf36c;
+            --danger: #ef4444;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg) 0%, #225c1d 100%);
+            color: #e6eef6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.4rem
+        }
+
+        p.lead {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 0.95rem
+        }
+
+        form {
+            display: grid;
+            gap: 12px
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px
+        }
+
+        .input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        input[type="file"] {
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: inherit;
+            font-size: 1rem;
+            width: 100%
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.9rem
+        }
+
+        button {
+            appearance: none;
+            border: 0;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent), #03e003);
+            color: #012028;
+            cursor: pointer;
+            font-size: 1rem
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed
+        }
+
+        .helper {
+            font-size: 0.85rem;
+            color: var(--muted)
+        }
+
+        .error {
+            color: var(--danger);
+            font-size: 0.85rem
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 6px
+        }
+
+        .logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), #0ea5a9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #012028
+        }
+
+        .msg {
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(6, 182, 212, 0.06);
+            color: var(--accent);
+            font-weight: 600;
+            text-align: center
+        }
+
+        /* Input de archivo */
+        .input-file {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .input-file input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+        }
+
+
+        .btn-upload {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), #0ea5a9);
+            color: #012028;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-upload:hover {
+            background: linear-gradient(90deg, #0ea5a9, var(--accent));
+        }
+
+        /* Vista previa de la imagen */
+        #preview {
+            margin-top: 12px;
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: none;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+
+        @media (max-width:480px) {
+            .card {
+                padding: 18px
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="register-container"> <form action="">
-            <h2>Registro</h2>
 
-            <div class="input-box"> <input type="text" name="fullname" required>
-                <label>Nombre completo</label>
+    <main class="card" role="main">
+        <div class="brand">
+            <div class="logo">⚽</div>
+            <div>
+                <h1>Registro de sesión</h1>
+                <p class="lead">Registrate para continuar</p>
+            </div>
+        </div>
+
+        <form id="RegisterForm" action="sign-In.html" novalidate>
+
+            <div>
+                <label for="photo">Foto de perfil</label>
+                <div class="input">
+                    <input id="photo" name="photo" type="file" accept="image/*" />
+                </div>
+                <img id="preview" src="" alt="Vista previa"
+                    style="margin-top:10px;max-width:120px;display:none;border-radius:8px;" />
+                    
             </div>
 
-            <div class="input-box">
-                <input type="text" name="username" required>
-                <label>Nombre de usuario</label>
-            </div>
 
-            <div class="input-box">
-                <input type="email" name="email" required>
-                <label>Correo electrónico</label>
-            </div>
+            <div>
+                <label for="name">Nombre completo</label>
+                <div class="input">
+                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Juan Perez" required
+                        aria-required="true" />
 
-            <div class="input-box">
-                <input type="password" name="password" required minlength="6">
-                <label>Contraseña</label>
-            </div>
+                    <div id="nameError" class="error" aria-live="polite"></div>
+                </div>
 
-            <div class="input-box">
-                <input type="password" name="confirm_password" required minlength="6">
-                <label>Confirmar contraseña</label>
-            </div>
+                <div>
+                    <label for="email">Correo electrónico</label>
+                    <div class="input">
+                        <input id="email" name="email" type="email" autocomplete="email"
+                            placeholder="tucorreo@ejemplo.com" required aria-required="true" />
+                    </div>
+                    <div id="emailError" class="error" aria-live="polite"></div>
+                </div>
 
-            <button type="submit">Registrarse</button>
+                <div>
+                    <label for="password">Contraseña</label>
+                    <div class="input">
+                        <input id="password" name="password" type="password" autocomplete="current-password"
+                            placeholder="********" required aria-required="true" minlength="6" />
+                        <button type="button" id="togglePwd" aria-label="Mostrar contraseña"
+                            title="Mostrar contraseña">👁️</button>
+                    </div>
+                    <div id="pwdError" class="error" aria-live="polite"></div>
+                </div>
 
-            <div class="logIn-link">
-                <p>¿Ya tienes una cuenta? <a href="sign-In.html">Inicia sesión</a></p>
-            </div>
+
+
+                <div>
+                    <button id="submitBtn" type="submit">Entrar</button>
+
+                </div>
+
+                <div id="serverMsg" role="status" aria-live="polite" style="display:none;margin-top:6px"></div>
+
+                <p class="helper" style="margin-top:12px">¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
         </form>
-    </div>
+    </main>
+
+    <!--script para las restricciones de usuario-->
+    <script>
+    const form = document.getElementById('RegisterForm');
+    const name = document.getElementById('name');
+    const nameError = document.getElementById('nameError');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const pwdError = document.getElementById('pwdError');
+    const serverMsg = document.getElementById('serverMsg');
+    const submitBtn = document.getElementById('submitBtn');
+    const toggle = document.getElementById('togglePwd');
+
+    toggle.addEventListener('click', () => {
+        const t = password.type === 'password' ? 'text' : 'password';
+        password.type = t;
+        toggle.textContent = t === 'text' ? '🔒' : '👁️';
+        toggle.setAttribute('aria-label', t === 'text' ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    });
+
+    //funciones de validacion
+
+    function validateName() {
+        const v = name.value.trim();
+        if (!v) {
+            nameError.textContent = 'Ingresa tu nombre completo.';
+            return false;
+        }
+        const re = /^[a-zA-ZÀ-ÿ\s]+$/; // Letras, acentos y espacios
+        if (!re.test(v)) {
+            nameError.textContent = 'Nombre no valido.';
+            return false;
+        }
+        nameError.textContent = '';
+        return true;
+    }
+
+    function validateEmail() {
+        const v = email.value.trim();
+        if (!v) {
+            emailError.textContent = 'Ingresa tu correo.';
+            return false;
+        }
+        const re = /^\S+@\S+\.\S+$/;
+        if (!re.test(v)) {
+            emailError.textContent = 'Correo no valido.';
+            return false;
+        }
+        emailError.textContent = '';
+        return true;
+    }
+
+    function validatePassword() {
+        const v = password.value;
+        if (!v) {
+            pwdError.textContent = 'Ingresa tu password.';
+            return false;
+        }
+        if (v.length < 6) {
+            pwdError.textContent = 'La password debe tener al menos 6 caracteres.';
+            return false;
+        }
+        pwdError.textContent = '';
+        return true;
+    }
+
+    name.addEventListener('input', validateName);
+    email.addEventListener('input', validateEmail);
+    password.addEventListener('input', validatePassword);
+
+    //verificador de datos ingresados - importante
+    form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            serverMsg.style.display = 'none';
+
+            const ok = validateEmail() & validatePassword() & validateName(); 
+            if (!ok) { return }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verificando...';
+
+            await new Promise(r => setTimeout(r, 900));
+
+            
+        });
+</script>
+
+
+    <!--script para la foto-->
+    <script>
+        const photoInput = document.getElementById('photo');
+        const preview = document.getElementById('preview');
+
+        photoInput.addEventListener('change', () => {
+            const file = photoInput.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>
