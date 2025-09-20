@@ -1,0 +1,57 @@
+/* === Torneos y copas === */
+.torneos-col {
+  flex-basis: 31%;
+  background: #f3fff3;
+  border-radius: 10px;
+  margin: 5%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.torneos-col:hover {
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+  justify-content: left;
+}
+
+.torneos-col ul,
+.torneos-col ol {
+    padding-left: 20px;   
+    margin: 10px 0;      
+}
+
+
+.torneos-col li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.torneos-row {
+  margin-top: 5%;
+  margin-left: 3%;
+  display: contents;
+  justify-content: left;
+}
+
+.listaTorneos-cuadro{
+ flex-basis: 31%;
+  background: #f3fff3;
+  border-radius: 10px;
+  margin: 5%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+.listaTorneos-cuadro:hover {
+  box-shadow: 0 0 20px 0px rgb(191, 255, 142);
+}
+
+.sub-headerTorneos {
+  height: 50vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(images/soccerAboutUs.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}

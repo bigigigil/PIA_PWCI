@@ -1,5 +1,3 @@
-/*---------Jugadores----------*/
-
 .global-styles {
     margin: 0;
     padding: 0;
@@ -16,7 +14,6 @@
     flex-wrap: wrap;
     gap: 20px;
 }
-
 .subPlayer-header {
     height: 50vh;
     width: 100%;
@@ -26,7 +23,6 @@
     text-align: center;
     color: #ffffff;
 }
-
 .card {
     width: 250px;
     height: 370px;
@@ -35,7 +31,6 @@
     transition: transform 0.3s ease-in-out;
 
 }
-
 .card {
     position: relative;
     overflow: hidden;
@@ -53,16 +48,13 @@
     transform: skewX(-30deg);
     transition: all 0.5s ease-in-out;
 }
-
 .card:hover::after {
     left: 100%;
 }
-
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-
 .card img {
     transition: transform 0.3s ease-in-out;
     width: auto;
@@ -71,86 +63,43 @@
     display: block;
     margin: 0 auto;
 }
-
 .card:hover img {
     transform: scale(1.05);
-    /* Agranda la imagen un 5% */
 }
 
 .card.blue {
     background: linear-gradient(135deg, #09AFFF, #03283a);
 }
-
 .card.yellow {
     background: linear-gradient(135deg, #dbf211, #ac870d);
 }
-
-/*green*/
-
 .card.green {
     background: linear-gradient(135deg, #11f22f, #066435);
 }
-
-
-
-/*yellow2*/
-
 .card.yellow2 {
     background: linear-gradient(135deg, #d0f211, #406406);
 }
-
-
-
-/*red*/
-
 .card.red {
     background: linear-gradient(135deg, #ff0000, #d18787);
 }
-
-
-/*red2*/
-
 .card.red2 {
     background: linear-gradient(135deg, #ff4141, #640606);
 }
-
-
-/*red3*/
-
 .card.red3 {
     background: linear-gradient(135deg, #ff0000, #07c5ff);
 }
-
-
-
-/*red4*/
-
 .card.red4 {
     background: linear-gradient(135deg, #290000, #ff0000);
 }
-
-
-
-/*orange*/
-
 .card.orange {
     background: linear-gradient(135deg, #ff9100, #b93500);
 }
-
-/*white*/
-
 .card.white {
     background: linear-gradient(135deg, #ffc524, #ffffff);
 }
-
-/*blue2*/
-
 .card.blue2 {
     background: linear-gradient(135deg, #2457ff, #ffffff);
 }
-
-/*Blue3*/
-
 .card.blue3 {
     background: linear-gradient(135deg, #2483ff, #4400ff);
 }

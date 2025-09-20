@@ -1,0 +1,45 @@
+.subHis-header {
+  height: 50vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/El_origen_y_evolucion.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+
+.content-His {
+  max-width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.history-col p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Gill Sans';
+}
+
+.history1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Gill Sans';
+}
+
+.history1 h2{
+  text-align: center;
+  color: #004d40; 
+  border-bottom: 2px solid #004d40; 
+  padding-bottom: 5px;
+}
+
+.history1 b{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00796b;
+}

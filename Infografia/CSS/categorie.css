@@ -1,0 +1,73 @@
+/*----------Categories-content----------*/
+
+.categorie {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.categorie h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.categorie .row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.categorie-col {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1 1 300px;
+  max-width: 320px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.categorie-col:hover {
+  transform: translateY(-5px);
+}
+
+.categorie-col h2 {
+  margin: 15px 0;
+  font-size: 1.5rem;
+}
+
+.categorie-col p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.categorie-col .icon {
+  font-size: 40px;
+  color: #13c722;
+}
+
+.categorie-col .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #00810b;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.categorie-col .btn:hover {
+  background: #00ff2a;
+}
+
+.subCate-header {
+  height: 90vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/categoria.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
