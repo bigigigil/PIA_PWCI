@@ -1,11 +1,12 @@
 .subBlog-header {
   height: 40vh;
   width: 100%;
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/blog1.jpg);
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/blog/blog1.jpg);
   background-position: center;
   background-size: cover;
   text-align: center;
   color: #fff;
+  font-size:xx-large;
 }
 
 .blog-content {

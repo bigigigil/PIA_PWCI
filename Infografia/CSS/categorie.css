@@ -1,5 +1,3 @@
-/*----------Categories-content----------*/
-
 .categorie {
   text-align: center;
   padding: 50px 20px;
@@ -63,11 +61,17 @@
 }
 
 .subCate-header {
-  height: 90vh;
+  height: 50vh;
   width: 100%;
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/categoria.jpg);
-  background-position: center;
-  background-size: cover;
+  background-image: 
+    linear-gradient(rgba(4, 9, 30, 0.7)), 
+    url(../images/categoria.jpg), 
+    url(../images/categoria.jpg);
+  background-position: center, center, center;
+  background-size: cover,auto;
+  background-repeat: repeat;
   text-align: center;
   color: #fff;
+  font-size: xx-large;
 }
+

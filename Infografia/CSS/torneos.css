@@ -1,57 +1,183 @@
-/* === Torneos y copas === */
+.sub-headerTorneos {
+  height: 50vh;
+  width: 100%;
+  background-image: 
+    linear-gradient(rgba(4, 9, 30, 0.7)),url(../images/torneos/categoría_torneos.jpg);
+  background-position: center, center, center;
+  background-size: auto,cover;
+  background-repeat: repeat;
+  text-align: center;
+  color: #fff;
+  font-size: xx-large;
+}
+
+.sub-headerTorneos h1 {
+  font-size: 3.5rem;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* CONTENIDO PRINCIPAL */
+.content {
+  padding: 5rem 5%;
+}
+
+.torneos-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 .torneos-col {
-  flex-basis: 31%;
-  background: #f3fff3;
-  border-radius: 10px;
-  margin: 5%;
-  padding: 20px 12px;
-  box-sizing: border-box;
-  transition: 0.5s;
+
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .torneos-col:hover {
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-  justify-content: left;
+  transform: translateY(-5px);
+}
+
+
+.torneos-col table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.torneos-col th {
+  vertical-align: top;
+  padding: 1.5rem;
+}
+
+.torneos-col h1 {
+  color: var(--azulito); /* azul propio */
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.torneos-col h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color); /* verde como acento */
+  border-radius: 2px;
+}
+
+
+.torneos-col p,
+.torneos-col ul,
+.torneos-col ol {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.torneos-col img {
+  width: auto;          /* ocupa todo el ancho disponible del contenedor */
+  height: 350px;        /* altura fija para todas */
+  object-fit: cover;    /* recorta para mantener proporción */
+  border-radius: 8px;
+  transition: var(--transition);
+  display: block;
+  margin: 50px;
+}
+
+.torneos-col img:hover {
+  transform: scale(1.03);
 }
 
 .torneos-col ul,
 .torneos-col ol {
-    padding-left: 20px;   
-    margin: 10px 0;      
+  padding-left: 1.5rem;
 }
-
 
 .torneos-col li {
-    margin-bottom: 5px;
-    line-height: 1.5;
+  margin-bottom: 0.8rem;
+  position: relative;
 }
 
-.torneos-row {
-  margin-top: 5%;
-  margin-left: 3%;
-  display: contents;
-  justify-content: left;
+.torneos-col ul li:before {
+  font-family: "bootstrap-icons"; /* fuente de iconos */
+  content: "\F5E6";               /* código del icono */
+  position: absolute;
+  left: -1.5rem;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
 }
 
-.listaTorneos-cuadro{
- flex-basis: 31%;
-  background: #f3fff3;
-  border-radius: 10px;
-  margin: 5%;
-  padding: 20px 12px;
-  box-sizing: border-box;
-  transition: 0.5s;
-}
-.listaTorneos-cuadro:hover {
-  box-shadow: 0 0 20px 0px rgb(191, 255, 142);
+
+.torneos-col ol {
+  counter-reset: item;
 }
 
-.sub-headerTorneos {
-  height: 50vh;
-  width: 100%;
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(images/soccerAboutUs.jpg);
-  background-position: center;
-  background-size: cover;
+.torneos-col ol li {
+  counter-increment: item;
+}
+
+.torneos-col ol li:before {
+  content: counter(item) ". ";
+  font-weight: bold;
+  color: var(--azulito);
+}
+
+/* SECCIÓN LISTA DE TORNEOS */
+.content>h1 {
   text-align: center;
-  color: #fff;
+  margin: 4rem 0 2rem;
+  color: var(--azulito);
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.content>h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+#listaTorneos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.listaTorneos-cuadro {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.listaTorneos-cuadro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-bottom: 4px solid var(--secondary-color);
+}
+
+:root {
+  --azulito: #0c4da2;
+  --secondary-color: #8bbd3a;
+  --accent-color: #ff5722;
+  --light-bg: #f8f9fa;
+  --dark-text: #333;
+  --light-text: #fff;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
