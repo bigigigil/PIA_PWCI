@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/register.css">
+
+</head>
+
+<body>
+    <div class="register-box">
+        <form id="registerForm">
+            <h2>Registro</h2>
+
+            <div class="photo-upload">
+                <div class="photo-preview" onclick="document.getElementById('photo').click()">
+                    <div class="photo-placeholder" id="photoPlaceholder">
+                        Clic para agregar foto
+                    </div>
+                </div>
+                <input type="file" id="photo" accept="image/*">
+                <label for="photo">Seleccionar foto</label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="fullname" name="fullname" required>
+                <label for="fullname">Nombre Completo</label>
+                <div class="error-message" id="fullnameError">El nombre completo es obligatorio</div>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Nombre de Usuario</label>
+                <div class="error-message" id="usernameError">El nombre de usuario es obligatorio</div>
+            </div>
+
+            <div class="input-box">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Correo Electrónico</label>
+                <div class="error-message" id="emailError">Ingresa un email válido</div>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Contraseña</label>
+                <div class="error-message" id="passwordError">La contraseña debe tener al menos 6 caracteres</div>
+            </div>
+
+            <div class="input-box">
+                <input type="date" id="birthdate" name="birthdate" required>
+                <label for="birthdate">Fecha de Nacimiento</label>
+                <div class="error-message" id="birthdateError">La fecha de nacimiento es obligatoria</div>
+            </div>
+
+            <button type="submit" id="registerBtn">Crear Cuenta</button>
+
+            <div class="success-message" id="successMessage">
+                ¡Registro exitoso! 🎉 Redirigiendo...
+            </div>
+
+            <div class="login-link">
+                <p><a href="log-In.html">¿Ya tienes cuenta? Inicia sesión</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registerForm');
+        const fullname = document.getElementById('fullname');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const birthdate = document.getElementById('birthdate');
+        const photo = document.getElementById('photo');
+        const registerBtn = document.getElementById('registerBtn');
+        const successMessage = document.getElementById('successMessage');
+        const photoPlaceholder = document.getElementById('photoPlaceholder');
+
+
+        photo.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const photoPreview = document.querySelector('.photo-preview');
+                    photoPreview.innerHTML = `<img src="${e.target.result}" alt="Vista previa">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+        function validateField(input, condition, errorId) {
+            const errorElement = document.getElementById(errorId);
+
+            if (!condition) {
+                input.classList.add('error');
+                input.classList.remove('success');
+                errorElement.classList.add('show');
+                return false;
+            } else {
+                input.classList.remove('error');
+                input.classList.add('success');
+                errorElement.classList.remove('show');
+                return true;
+            }
+        }
+
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+
+        function isValidAge(birthdate) {
+            const today = new Date();
+            const birth = new Date(birthdate);
+            const age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                return age - 1 >= 13;
+            }
+            return age >= 13;
+        }
+
+
+        fullname.addEventListener('input', function () {
+            validateField(fullname, fullname.value.trim() !== '', 'fullnameError');
+        });
+
+        username.addEventListener('input', function () {
+            validateField(username, username.value.trim() !== '', 'usernameError');
+        });
+
+        email.addEventListener('input', function () {
+            const isValid = email.value.trim() !== '' && isValidEmail(email.value);
+            validateField(email, isValid, 'emailError');
+        });
+
+        password.addEventListener('input', function () {
+            validateField(password, password.value.length >= 6, 'passwordError');
+        });
+
+        birthdate.addEventListener('change', function () {
+            const isValid = birthdate.value !== '' && isValidAge(birthdate.value);
+            const errorElement = document.getElementById('birthdateError');
+
+            if (!isValid) {
+                if (birthdate.value === '') {
+                    errorElement.textContent = 'La fecha de nacimiento es obligatoria';
+                } else {
+                    errorElement.textContent = 'Debes ser mayor de 13 años';
+                }
+            }
+
+            validateField(birthdate, isValid, 'birthdateError');
+        });
+
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+
+            const isFullnameValid = validateField(fullname, fullname.value.trim() !== '', 'fullnameError');
+            const isUsernameValid = validateField(username, username.value.trim() !== '', 'usernameError');
+            const isEmailValid = validateField(email, email.value.trim() !== '' && isValidEmail(email.value), 'emailError');
+            const isPasswordValid = validateField(password, password.value.length >= 6, 'passwordError');
+            const isBirthdateValid = validateField(birthdate, birthdate.value !== '' && isValidAge(birthdate.value), 'birthdateError');
+
+
+            if (isFullnameValid && isUsernameValid && isEmailValid && isPasswordValid && isBirthdateValid) {
+                registerBtn.disabled = true;
+                registerBtn.textContent = 'Creando cuenta...';
+
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+
+
+                    console.log('Datos de registro:', {
+                        photo: photo.files[0] || null,
+                        fullname: fullname.value,
+                        username: username.value,
+                        email: email.value,
+                        password: password.value,
+                        birthdate: birthdate.value
+                    });
+
+
+                    setTimeout(() => {
+
+                        window.location.href = 'log-In.html';
+                    }, 2000);
+
+                }, 1500);
+            }
+        });
+
+        // ... (Código JavaScript existente) ...
+
+        // Actualizar la función de validación de contraseña (para requisito 5)
+        function isStrongPassword(password) {
+            // Debe tener al menos 8 caracteres, una letra mayúscula, una minúscula y un número
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return regex.test(password);
+        }
+
+        password.addEventListener('input', function () {
+            const isValid = isStrongPassword(password.value);
+            const errorElement = document.getElementById('passwordError');
+            if (!isValid) {
+                errorElement.textContent = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.';
+            } else {
+                errorElement.textContent = 'La contraseña debe tener al menos 6 caracteres'; // Mensaje genérico, aunque la condición es más estricta.
+            }
+            validateField(password, isValid, 'passwordError');
+        });
+
+
+        // Envio del formulario (Implementación AJAX para Requisito 6)
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // 1. Validar todos los campos (se mantiene la validación frontend)
+            const isFullnameValid = validateField(fullname, fullname.value.trim() !== '', 'fullnameError');
+            const isUsernameValid = validateField(username, username.value.trim() !== '', 'usernameError');
+            const isEmailValid = validateField(email, email.value.trim() !== '' && isValidEmail(email.value), 'emailError');
+            const isPasswordValid = validateField(password, isStrongPassword(password.value), 'passwordError');
+            const isBirthdateValid = validateField(birthdate, birthdate.value !== '' && isValidAge(birthdate.value), 'birthdateError');
+
+            if (isFullnameValid && isUsernameValid && isEmailValid && isPasswordValid && isBirthdateValid) {
+                registerBtn.disabled = true;
+                registerBtn.textContent = 'Creando cuenta...';
+
+                // 2. Preparar los datos para la API propia
+                const userData = {
+                    fullname: fullname.value,
+                    // NOTA: El campo 'username' del HTML debe mapearse al campo 'nombre' en la DB
+                    // Si el campo 'username' no es requerido por la DB, se podría eliminar o mapear
+                    // Aquí lo dejaremos en el body JSON, aunque el backend no lo usa actualmente
+                    username: username.value,
+                    email: email.value,
+                    password: password.value,
+                    birthdate: birthdate.value,
+                    // Campos que deberían estar en el formulario o ser predeterminados:
+                    // gender: document.getElementById('gender').value,
+                    // country: document.getElementById('country').value 
+                };
+
+                // 3. Petición AJAX (fetch) a la API propia
+                fetch('api/usuarios.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(response => response.json().then(data => ({ status: response.status, body: data })))
+                    .then(({ status, body }) => {
+                        if (status === 201) {
+                            // Éxito: Mostrar mensaje y redirigir
+                            successMessage.textContent = '¡Registro exitoso! Redirigiendo a Iniciar Sesión...';
+                            successMessage.classList.add('show');
+
+                            setTimeout(() => {
+                                window.location.href = 'sign-in.php'; // Redirigir al .php
+                            }, 2000);
+                        } else {
+                            // Error: Mostrar mensaje de error de la API (ej: Email ya existe)
+                            document.getElementById('fullnameError').textContent = `Error (${status}): ${body.error}`;
+                            document.getElementById('fullnameError').classList.add('show');
+
+                            // Volver a habilitar el botón
+                            registerBtn.disabled = false;
+                            registerBtn.textContent = 'Crear Cuenta';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error de conexión:', error);
+                        // Error de red
+                        document.getElementById('fullnameError').textContent = 'Error de red. Intenta de nuevo.';
+                        document.getElementById('fullnameError').classList.add('show');
+                        registerBtn.disabled = false;
+                        registerBtn.textContent = 'Crear Cuenta';
+                    });
+            }
+        });
+    </script>
+
+    <script src="SCRIPTS/auth.js"></script>
+</body>
+
+</html>

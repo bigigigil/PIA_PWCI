@@ -3,7 +3,7 @@ class Database {
     private $host = 'localhost'; 
     private $db_name = 'infografia_pwci'; 
     private $username = 'root'; 
-    private $password = ''; 
+    private $password = 'young.KDAY6rati'; 
     private $conn;
 
     /**
