@@ -1,7 +1,7 @@
 <?php 
-use Core\Router;
+use varios\router;
 
-$router = new Router();
+$router = new router();
 
 $router->add('/', 'controllers/home.php');
 $router->addMiddleware('/', 'middlewares/auth.php');

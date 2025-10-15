@@ -1,5 +1,5 @@
 <?php
-use Core\Router;
+use varios\router;
 
 $config = require 'varios/config.php';
 require 'varios/functions.php';
