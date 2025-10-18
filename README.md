@@ -161,7 +161,7 @@ VALUES (
     'México',
     'Mexicana',
     'roxanna@hotmail.com',
-    '$2y$10$HDZh.vNmivkAwho3tsbw6OhTIsFiOwoG0oO8DQ.VBU5vhxHwOf.FO', -- La contraseña es: Contraseña_123
+    '$2y$10$HDZh.vNmivkAwho3tsbw6OhTIsFiOwoG0oO8DQ.VBU5vhxHwOf.FO', -- La contraseña es: -- cOntraseña_123
     'Admin'
 );
 
