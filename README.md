@@ -73,11 +73,16 @@ El primer paso es crear la base de datos y sus tablas.
 <!-- end list -->
 
 ```sql
-CREATE DATABASE infografia_pwci;
+
+CREATE DATABASE IF NOT EXISTS infografia_pwci;
 
 USE infografia_pwci;
 
--- Creación de la tabla de Usuarios
+-- ----------------------------------------------------------------------
+-- 1. CREACIÓN DE TABLAS PRINCIPALES
+-- ----------------------------------------------------------------------
+
+-- Tabla Usuario
 CREATE TABLE Usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -88,14 +93,14 @@ CREATE TABLE Usuario (
     paisNacimiento VARCHAR(50) NOT NULL,
     nacionalidad VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL, -- Aumentado para hashes de contraseña seguros
+    password VARCHAR(255) NOT NULL, 
     rol ENUM('Admin','Usuario') DEFAULT 'Usuario',
     fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
     estatus ENUM('Activo','Eliminado') DEFAULT 'Activo',
     tipoImagen VARCHAR(10)
 );
 
--- Creación de tablas adicionales
+-- Tabla Categoria
 CREATE TABLE Categoria (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -105,6 +110,7 @@ CREATE TABLE Categoria (
     FOREIGN KEY (idUsuarioCreador) REFERENCES Usuario(id)
 );
 
+-- Tabla Mundial
 CREATE TABLE Mundial (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -120,6 +126,7 @@ CREATE TABLE Mundial (
     FOREIGN KEY (idUsuarioCreador) REFERENCES Usuario(id)
 );
 
+-- Tabla Seleccion
 CREATE TABLE Seleccion (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -128,6 +135,7 @@ CREATE TABLE Seleccion (
     tipoBandera VARCHAR(10)
 );
 
+-- Tabla Publicacion
 CREATE TABLE Publicacion (
     idPublicacion INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(200) NOT NULL,
@@ -144,6 +152,7 @@ CREATE TABLE Publicacion (
     idUsuarioAprobador INT,
     estado ENUM('pendiente','aprobada','rechazada') DEFAULT 'pendiente',
     motivoRechazo TEXT,
+    vistas INT DEFAULT 0,
     FOREIGN KEY (idUsuario) REFERENCES Usuario(id),
     FOREIGN KEY (idMundial) REFERENCES Mundial(id),
     FOREIGN KEY (idCategoria) REFERENCES Categoria(id),
@@ -151,7 +160,38 @@ CREATE TABLE Publicacion (
     FOREIGN KEY (idUsuarioAprobador) REFERENCES Usuario(id)
 );
 
--- Creación del usuario Administrador de prueba
+-- ----------------------------------------------------------------------
+-- 2. NUEVAS TABLAS (Comentarios y Calificaciones)
+-- ----------------------------------------------------------------------
+
+-- Tabla Comentario
+CREATE TABLE Comentario (
+    idComentario INT PRIMARY KEY AUTO_INCREMENT,
+    idPublicacion INT NOT NULL,
+    idUsuario INT NOT NULL,
+    comentario TEXT NOT NULL,
+    fechaComentario DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idPublicacion) REFERENCES Publicacion(idPublicacion) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
+);
+
+-- Tabla Calificacion (Likes/Dislikes)
+CREATE TABLE Calificacion (
+    idCalificacion INT PRIMARY KEY AUTO_INCREMENT,
+    idPublicacion INT NOT NULL,
+    idUsuario INT NOT NULL,
+    valor TINYINT(1) NOT NULL CHECK (valor IN (1, -1)), 
+    fechaCalificacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uk_calificacion (idPublicacion, idUsuario), 
+    FOREIGN KEY (idPublicacion) REFERENCES Publicacion(idPublicacion) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
+);
+
+
+-- ----------------------------------------------------------------------
+-- 3. INSERCIONES DE PRUEBA (Admin, Mundial, Categorías)
+-- ----------------------------------------------------------------------
+
 INSERT INTO Usuario (nombre, username, fechaNacimiento, genero, paisNacimiento, nacionalidad, email, password, rol) 
 VALUES (
     'Roxanna',
@@ -161,12 +201,19 @@ VALUES (
     'México',
     'Mexicana',
     'roxanna@hotmail.com',
-    '$2y$10$HDZh.vNmivkAwho3tsbw6OhTIsFiOwoG0oO8DQ.VBU5vhxHwOf.FO', -- La contraseña es: -- cOntraseña_123
+    -- Contraseña hasheada para 'cOntraseña_123' (VARCHAR 255 necesario)
+    '$2y$10$HDZh.vNmivkAwho3tsbw6OhTIsFiOwoG0oO8DQ.VBU5vhxHwOf.FO', 
     'Admin'
 );
 
--- Verificar inserción (opcional)
-SELECT nombre, username, email, password, rol FROM Usuario;
+
+INSERT INTO Mundial (nombre, año, sedePrincipal, idUsuarioCreador) 
+VALUES ('Copa Mundial de la FIFA 2022', 2022, 'Qatar', 1);
+
+INSERT INTO Categoria (nombre, descripcion, idUsuarioCreador) 
+VALUES ('Jugadas', 'Análisis de jugadas y goles memorables.', 1),
+       ('Estadísticas', 'Datos y números curiosos.', 1);
+
 ```
 
 ### 3\. Instalación de los Archivos del Proyecto
