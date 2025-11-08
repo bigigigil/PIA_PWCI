@@ -6,7 +6,7 @@
   background-size: cover;
   position: relative;
 }
-/* course */
+
 .course {
   width: 80%;
   margin: auto;
@@ -60,8 +60,6 @@ h3 {
   }
 }
 
-/*Part2*/
-
 .ParteDos {
   width: 80%;
   margin: auto;
@@ -114,7 +112,6 @@ h3 {
   bottom: 49%;
   opacity: 1;
 }
-/*Parte4*/
 
 .ParteCuatro {
   text-align: center;
@@ -209,7 +206,6 @@ h3 {
   opacity: 1;
 }
 
-/* 🔥 Animación del gradiente de fondo */
 @keyframes gradientBG {
   0% {
     background-position: 0% 50%;
