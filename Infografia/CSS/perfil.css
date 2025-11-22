@@ -1,0 +1,171 @@
+.sub-header-perfil {
+    height: 40vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/registro/inicio5.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.perfil-sidebar {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+}
+
+.perfil-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00810b;
+    margin-bottom: 15px;
+}
+
+.perfil-sidebar h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.perfil-sidebar p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.perfil-main-content {
+    flex-grow: 1;
+}
+
+.perfil-main-content h3 {
+    font-size: 1.5rem;
+    color: #00810b;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.perfil-details div {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.perfil-details label {
+    font-weight: 600;
+    color: #333;
+    width: 150px;
+    font-size: 1rem;
+}
+
+.perfil-details span {
+    color: #555;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.edit-btn-perfil {
+    display: inline-block;
+    background: #00810b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.edit-btn-perfil:hover {
+    background: #00ff2a;
+}
+
+@media (max-width: 768px) {
+    .perfil-container {
+        flex-direction: column;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .perfil-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        flex: auto;
+    }
+
+    .perfil-details div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .perfil-details label {
+        width: auto;
+        margin-bottom: 5px;
+    }
+}
+
+/* --- ESTILOS DEL MODAL (Agrega esto al final de perfil.css) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); /* Fondo oscuro */
+    backdrop-filter: blur(5px); /* Efecto borroso opcional */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 500px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #000;
+}

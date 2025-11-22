@@ -1,11 +1,11 @@
 .sub-headerTorneos {
   height: 50vh;
   width: 100%;
-  background-image: 
-    linear-gradient(rgba(4, 9, 30, 0.7)),url(../images/torneos/categoría_torneos.jpg);
-  background-position: center, center, center;
-  background-size: auto,cover;
-  background-repeat: repeat;
+  background-image:
+    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),url(../images/torneos/categoría_torneos.jpg); /* Corregida la sintaxis del gradient */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
   color: #fff;
   font-size: xx-large;
@@ -19,22 +19,25 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
+
 /* CONTENIDO PRINCIPAL */
 .content {
   padding: 5rem 5%;
 }
 
 .torneos-row {
-  display: flex;
-  flex-direction: column;
+  display: grid; /* Cambiado a grid para mejor control de layout */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adaptativo */
   gap: 3rem;
 }
 
 .torneos-col {
-
   border-radius: 12px;
   padding: 20px;
   transition: transform 0.2s ease-in-out;
+  background-color: white; 
+ 
 }
 
 .torneos-col:hover {
@@ -53,7 +56,7 @@
 }
 
 .torneos-col h1 {
-  color: var(--azulito); /* azul propio */
+  color: var(--azulito);
   font-size: 1.6rem;
   margin-bottom: 1rem;
   position: relative;
@@ -67,10 +70,13 @@
   left: 0;
   width: 50px;
   height: 3px;
-  background-color: var(--secondary-color); /* verde como acento */
+  background-color: var(--secondary-color);
   border-radius: 2px;
 }
 
+.torneos-col h2 {
+  text-align: center;
+}
 
 .torneos-col p,
 .torneos-col ul,
@@ -80,13 +86,13 @@
 }
 
 .torneos-col img {
-  width: auto;          /* ocupa todo el ancho disponible del contenedor */
-  height: 350px;        /* altura fija para todas */
-  object-fit: cover;    /* recorta para mantener proporción */
+  width: auto;
+  height: 350px;
+  object-fit: cover;
   border-radius: 8px;
   transition: var(--transition);
   display: block;
-  margin: 50px;
+  margin: 50px; /* Esto puede ser demasiado, revisa si deseas un margen menor */
 }
 
 .torneos-col img:hover {
@@ -104,8 +110,8 @@
 }
 
 .torneos-col ul li:before {
-  font-family: "bootstrap-icons"; /* fuente de iconos */
-  content: "\F5E6";               /* código del icono */
+  font-family: "bootstrap-icons";
+  content: "\F5E6";
   position: absolute;
   left: -1.5rem;
   color: var(--secondary-color);
@@ -127,7 +133,6 @@
   color: var(--azulito);
 }
 
-/* SECCIÓN LISTA DE TORNEOS */
 .content>h1 {
   text-align: center;
   margin: 4rem 0 2rem;
@@ -135,6 +140,10 @@
   font-size: 2.2rem;
   position: relative;
   padding-bottom: 15px;
+}
+
+.content>h2 {
+  text-align: center;
 }
 
 .content>h1:after {
@@ -169,6 +178,233 @@
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   border-bottom: 4px solid var(--secondary-color);
+}
+
+/* ======================================= */
+/* ESTILOS DE WIDGETS DE API Y MODALES */
+/* ======================================= */
+
+.widget-container {
+    background-color: var(--light-bg);
+    padding: 30px 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center; /* Asegura que el botón y el texto estén centrados */
+    /* Anulamos la transición en hover para que se vea más como un widget flotante */
+    transition: none; 
+    transform: none;
+}
+.widget-container:hover {
+    transform: none;
+}
+
+.widget-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex; /* Para centrar el logo y el texto */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--azulito);
+}
+
+.logo-widget {
+    height: 35px !important;
+    width: 35px !important;
+    margin: 0 10px 0 0 !important; /* Margen a la derecha del logo */
+    display: inline-block !important;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.open-modal-btn {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.open-modal-btn:hover {
+    background-color: #7aa130;
+}
+
+
+/* ------------------------------------- */
+/* Estilos del Modal Flotante */
+/* ------------------------------------- */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: modalopen 0.4s forwards;
+}
+
+@keyframes modalopen {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-title {
+    color: var(--azulito);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+}
+
+
+.schedule-table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra más sutil en la tabla */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.schedule-table thead {
+    background-color: var(--azulito);
+    color: var(--light-text);
+}
+
+.schedule-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+}
+
+.schedule-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.schedule-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.team-vs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.team-name {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.vs-text {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0 10px;
+    font-size: 0.8rem;
+}
+
+.status-final {
+    font-weight: bold;
+    color: var(--azulito);
+    white-space: nowrap;
+}
+
+.status-live {
+    font-weight: bold;
+    color: var(--light-text);
+    background-color: var(--accent-color);
+    padding: 3px 8px;
+    border-radius: 5px;
+    animation: pulse 1.5s infinite;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.status-scheduled {
+    color: var(--dark-text);
+    font-weight: 500;
+}
+
+.error-message {
+    color: var(--accent-color);
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    border: 1px dashed var(--accent-color);
+    margin: 20px 0;
+    border-radius: 8px;
 }
 
 :root {

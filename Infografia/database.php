@@ -3,14 +3,10 @@ class Database {
     private $host = 'localhost'; 
     private $db_name = 'infografia_pwci'; 
     private $username = 'root'; 
-    private $password = ''; 
+    private $password = 'young.KDAY6rati'; 
     private $conn;
 
-    /**
-     * Obtiene la conexión a la base de datos usando PDO.
-     * 
-     * @return PDO|null Objeto de conexión PDO o null en caso de error.
-     */
+  
     public function connect() {
         $this->conn = null;
 

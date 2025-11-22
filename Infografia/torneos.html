@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,12 +26,12 @@
             <div class="nav-link" id="navLink">
                 <i class="bi bi-x-circle" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="index.html">INICIO</a></li>
+                  <li><a href="index.html">INICIO</a></li>
                     <li><a href="about.html">SOBRE NOSOTROS</a></li>
                     <li><a href="categorie.html">CATEGORIA</a></li>
-                    <li><a href="blog.html">BLOG</a></li>
-                    <li><a href="contact.html">CONTACTO</a></li>
-                    <li><a href="admin.html">ADMINISTRADOR</a></li>
+                    <li><a href="blog.php">BLOG</a></li>
+                    <li><a href="admin.php">ADMINISTRADOR</a></li>
+                    <li>
                     <li>
                         <a href="log-In.html">
                             <i class="bi bi-person-circle"></i> INICIAR SESION
@@ -43,100 +44,179 @@
         </nav>
 
         <h1>Torneos</h1>
+
+
+
     </section>
 
-    <section class="content">
-        <div class="torneos-row">
-            <div class="torneos-col">
-                <table>
-                    <tr>
-                        <td>
-                            <h1>¿Qué es un torneo?</h1>
-                            <p>
-                                Es una competición que reune a numerosos equipos y que por medio de eliminatorias se
-                                llega
-                                al mejor de todos, por eso se le denomina el campeón mundial. <br>
-                                Este esquema muestra como funciona la organizacion de los partidos que llevan a la final
-                                para elegir al campeón.
-                            </p>
-                        </td>
-                        <td>
-                            <img src="images/torneos/torneosEsquemas.jpg" alt="Esquema de torneos" width="100%">
-                        </td>
-                    </tr>
-                </table>
+
+
+<!--
+      <div id="modal-fifa" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title">FIFA Club World Cup - Partidos</h3>
+            <div id="fifa-schedule-container" class="modal-body">
             </div>
-
-            <div class="torneos-col">
-                <table>
-                    <tr>
-                        <td>
-                            <img src="https://i.postimg.cc/dVqH6WRf/posters.gif" alt="Gif de fútbol" width="100%">
-                        </td>
-                        <td>
-                            <h1>Historia de los torneos</h1>
-                            <p>
-                                Los torneos de fútbol comenzaron en el siglo XIX con ligas locales en Inglaterra.
-                                Con el paso del tiempo, el deporte creció a nivel internacional y surgieron
-                                competiciones
-                                como la Copa del Mundo en 1930 y la Champions League en 1955,
-                                que hoy en día son de los eventos deportivos más vistos en el planeta.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="torneos-col">
-                <table>
-                    <tr>
-                        <td>
-                            <h1>Tipos de torneos</h1>
-                            <ul>
-                                <li><strong>Ligas:</strong> todos los equipos juegan entre sí, gana el que más puntos
-                                    acumule.</li>
-                                <li><strong>Eliminación directa:</strong> el que pierde queda fuera hasta llegar a la
-                                    final.</li>
-                                <li><strong>Fase de grupos:</strong> se agrupan los equipos, pasan los mejores a la
-                                    siguiente ronda.</li>
-                                <li><strong>Mixtos:</strong> combinan fase de grupos y eliminación.</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <img src="https://www.uanl.mx/wp-content/uploads/2018/12/tigres-campeon-torneo-apertura-2017-4.jpg"
-                                alt="Copa de campeonato" width="100%">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="torneos-col">
-                <table>
-                    <tr>
-                        <td>
-                            <img src="images/torneos/copas.jpg" alt="Diferentes copas de fútbol" width="100%">
-
-                        </td>
-                        <td>
-                            <h1>Copas</h1>
-                            <ul>
-                                <li>Copa Mundial de la FIFA</li>
-                                <li>UEFA Champions League</li>
-                                <li>Copa Libertadores</li>
-                                <li>Liga de Campeones de la Concacaf</li>
-                                <li>Liga MX</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <h1>LISTA DE TORNEOS MÁS DESTACADOS</h1>
-            <div id="listaTorneos"></div>
         </div>
+    </div>
+
+    <div id="modal-mex" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title">Liga MX - Calendario y Resultados</h3>
+            <div id="standings-table-mex" class="modal-body">
+            </div>
+        </div>
+    </div>
+-->
+    <section class="content">
+        <div class="torneos-col">
+            <table>
+                <tr>
+                    <td>
+                        <h1>¿Qué es un torneo?</h1>
+                        <p>
+                            Es una competición que reune a numerosos equipos y que por medio de eliminatorias se
+                            llega
+                            al mejor de todos, por eso se le denomina el campeón mundial. <br>
+                            Este esquema muestra como funciona la organizacion de los partidos que llevan a la final
+                            para elegir al campeón.
+                        </p>
+                    </td>
+                    <td>
+                        <img src="images/torneos/torneosEsquemas.jpg" alt="Esquema de torneos" width="100%">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="torneos-col">
+            <table>
+                <tr>
+                    <td>
+                        <img src="https://i.postimg.cc/dVqH6WRf/posters.gif" alt="Gif de fútbol" width="100%">
+                    </td>
+                    <td>
+                        <h1>Historia de los torneos</h1>
+                        <p>
+                            Los torneos de fútbol comenzaron en el siglo XIX con ligas locales en Inglaterra.
+                            Con el paso del tiempo, el deporte creció a nivel internacional y surgieron
+                            competiciones
+                            como la Copa del Mundo en 1930 y la Champions League en 1955,
+                            que hoy en día son de los eventos deportivos más vistos en el planeta.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="torneos-col">
+            <table>
+                <tr>
+                    <td>
+                        <h1>Tipos de torneos</h1>
+                        <ul>
+                            <li><strong>Ligas:</strong> todos los equipos juegan entre sí, gana el que más puntos
+                                acumule.</li>
+                            <li><strong>Eliminación directa:</strong> el que pierde queda fuera hasta llegar a la
+                                final.</li>
+                            <li><strong>Fase de grupos:</strong> se agrupan los equipos, pasan los mejores a la
+                                siguiente ronda.</li>
+                            <li><strong>Mixtos:</strong> combinan fase de grupos y eliminación.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <img src="https://www.uanl.mx/wp-content/uploads/2018/12/tigres-campeon-torneo-apertura-2017-4.jpg"
+                            alt="Copa de campeonato" width="100%">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="torneos-col">
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/torneos/copas.jpg" alt="Diferentes copas de fútbol" width="100%">
+
+                    </td>
+                    <td>
+                        <h1>Copas</h1>
+                        <ul>
+                            <li>Copa Mundial de la FIFA</li>
+                            <li>UEFA Champions League</li>
+                            <li>Copa Libertadores</li>
+                            <li>Liga de Campeones de la Concacaf</li>
+                            <li>Liga MX</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+       <h1>CALENDARIOS</h1>
+        <h2> PROXIMOS TORNEOS</h2>
+    
+
+         <div class="torneos-col-api" style="margin-top: 1rem; text-align: center; display: flex; flex-direction: column; gap: 3rem;">
+
+                <div class="torneos-col">
+                    <h2 id="fifa-title" style="margin-bottom: 1.5rem; color: #0c4da2; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <img id="fifa-logo" src="" alt="Logo FIFA" style="height: 30px; width: 30px; margin: 0; object-fit: contain;">
+                        <span>FIFA Club World Cup - Calendario</span>
+                    </h2>
+                    <div id="fifa-schedule-container" style="max-width: 700px; margin: 0 auto;">
+                        Cargando calendario...
+                    </div>
+                </div>
+
+                <div class="torneos-col" style="margin-top: 3rem;">
+                    <h2 id="mex-title" style="margin-bottom: 1.5rem; color: #0c4da2; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <img id="mex-logo" src="" alt="Logo Liga MX" style="height: 30px; width: 30px; margin: 0; object-fit: contain;">
+                        <span>Liga MX - Calendario y Resultados</span>
+                    </h2>
+                    <div id="standings-table-mex" style="max-width: 768px; margin: 0 auto;">
+                        Cargando calendario...
+                    </div>
+                </div>
+            </div>
+<!--
+      <div class="widget-group"> 
+            
+            <div class="torneos-col widget-container">
+                <h2 id="fifa-title" class="widget-title">
+                    <img id="fifa-logo" src="" alt="Logo FIFA" class="logo-widget">
+                    <span>FIFA Club World Cup</span>
+                </h2>
+                <button class="open-modal-btn" data-modal="modal-fifa">
+                    Ver Partidos <i class="bi bi-calendar-event"></i>
+                </button>
+                <div id="fifa-schedule-preview" class="schedule-preview"></div>
+            </div>
+
+            <div class="torneos-col widget-container">
+                <h2 id="mex-title" class="widget-title">
+                    <img id="mex-logo" src="" alt="Logo Liga MX" class="logo-widget">
+                    <span>Liga MX</span>
+                </h2>
+                <button class="open-modal-btn" data-modal="modal-mex">
+                    Ver Partidos <i class="bi bi-trophy"></i>
+                </button>
+                <div id="mex-schedule-preview" class="schedule-preview"></div>
+            </div>
+
+        </div>        
+-->
+      
+       
+        <h1>LISTA DE TORNEOS MÁS DESTACADOS</h1>
+
+        <div id="listaTorneos"></div>
+
     </section>
 
-    <!-- Footer -->
+    
     <section class="footer">
         <h4>Sobre el equipo</h4>
         <p>
@@ -148,12 +228,15 @@
             <i class="bi bi-twitter"></i>
             <i class="bi bi-linkedin"></i>
         </div>
-        <p>Hecho con <i class="bi bi-stars"></i> por Nosotros</p>
+               <p>Hecho por Sofy & Rox <i class="bi bi-stars"></i> </p>
     </section>
-
+    <script src="SCRIPTS/auth.js"></script>
     <script src="SCRIPTS/carrusel.js"></script>
     <script src="SCRIPTS/torneos.js"></script>
+
 </body>
 
 
 </html>
+
+

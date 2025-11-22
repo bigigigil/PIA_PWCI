@@ -6,182 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    <link rel="stylesheet" href="CSS/log-In.css">
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100vh;
-            background-image: linear-gradient(rgba(48, 51, 61, 0.7), rgba(48, 51, 61, 0.7)), url('images/registro/inicio1.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .login-box {
-            position: relative;
-            width: 400px;
-            height: 500px;
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(15px);
-            padding: 40px;
-        }
-
-        h2 {
-            font-size: 2em;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .input-box {
-            position: relative;
-            width: 310px;
-            margin: 25px 0;
-            border-bottom: 2px solid #fff;
-        }
-
-        .input-box label {
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            font-size: 1em;
-            color: #fff;
-            pointer-events: none;
-            transition: 0.3s ease;
-        }
-
-        .input-box input:focus~label,
-        .input-box input:valid~label,
-        .input-box input:not(:placeholder-shown)~label {
-            top: -5px;
-            font-size: 0.8em;
-        }
-
-        .input-box input {
-            width: 100%;
-            height: 50px;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 1em;
-            color: #fff;
-            padding: 0 8px 0 5px;
-        }
-
-        .input-box input::placeholder {
-            color: transparent;
-        }
-
-        .input-box input.error {
-            border-bottom-color: #ff4757;
-        }
-
-        .input-box input.success {
-            border-bottom-color: #2ed573;
-        }
-
-        .error-message {
-            color: #ff4757;
-            font-size: 0.8em;
-            margin-top: 5px;
-            display: none;
-            position: absolute;
-            left: 5px;
-        }
-
-        .error-message.show {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        button {
-            width: 100%;
-            height: 40px;
-            background: #fff;
-            border: none;
-            outline: none;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 1em;
-            color: #000;
-            font-weight: 500;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background: #f1f1f1;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .success-message {
-            background: rgba(46, 213, 115, 0.2);
-            color: #2ed573;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            display: none;
-            text-align: center;
-            border: 1px solid rgba(46, 213, 115, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        .register-link {
-            font-size: .9em;
-            color: #fff;
-            text-align: center;
-            margin: 25px 0 10px;
-        }
-
-        .register-link p a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .register-link p a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
@@ -227,7 +53,6 @@
         const loginBtn = document.getElementById('loginBtn');
         const successMessage = document.getElementById('successMessage');
 
-        // Función para validar un campo
         function validateField(input, condition, errorId) {
             const errorElement = document.getElementById(errorId);
 
@@ -244,13 +69,11 @@
             }
         }
 
-        // Validar email
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
 
-        // Validaciones en tiempo real
         username.addEventListener('input', function () {
             validateField(username, username.value.trim() !== '', 'usernameError');
         });
@@ -277,42 +100,53 @@
             validateField(password, password.value.length >= 6, 'passwordError');
         });
 
-        // Envio del formulario
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
+     form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-            // Validar todos los campos
-            const isUsernameValid = validateField(username, username.value.trim() !== '', 'usernameError');
-            const isEmailValid = validateField(email, email.value.trim() !== '' && isValidEmail(email.value), 'emailError');
-            const isPasswordValid = validateField(password, password.value.length >= 6, 'passwordError');
+    const isUsernameValid = validateField(username, username.value.trim() !== '', 'usernameError');
+    const isEmailValid = validateField(email, email.value.trim() !== '' && isValidEmail(email.value), 'emailError');
+    const isPasswordValid = validateField(password, password.value.length >= 6, 'passwordError');
 
-            // si todo es un exito, simular envio
-            if (isUsernameValid && isEmailValid && isPasswordValid) {
-                loginBtn.disabled = true;
-                loginBtn.textContent = 'Iniciando sesión...';
+    if (isUsernameValid && isEmailValid && isPasswordValid) {
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Iniciando sesión...';
 
+        try {
+            const response = await fetch('api/login_api.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: username.value.trim(),
+                    email: email.value.trim(),
+                    password: password.value.trim()
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                successMessage.classList.add('show');
+                console.log('Inicio de sesión exitoso:', data);
                 setTimeout(() => {
-                    successMessage.classList.add('show');
-
-                    
-                    console.log('Datos de inicio de sesión:', {
-                        username: username.value,
-                        email: email.value,
-                        password: password.value
-                    });
-
-                   
-                    setTimeout(() => {
-                        
-                        window.location.href = 'index.html';
-                    }, 1000);
-
+                    window.location.href = 'index.html';
                 }, 1500);
+            } else {
+                alert(data.error || 'Error al iniciar sesión.');
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Iniciar Sesión';
             }
-        });
-    </script>
+        } catch (err) {
+            alert('Error de conexión con el servidor.');
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Iniciar Sesión';
+        }
+    }
+});
 
+   
+   </script>
 
+<script src="SCRIPTS/auth.js"></script>
 </body>
 
 </html>

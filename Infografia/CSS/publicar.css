@@ -1,0 +1,134 @@
+/* bigigigil/pia_pwci/PIA_PWCI-48b980d01e3bbce70b85b66108ec3ab25c78acd9/Infografia/CSS/publicar.css */
+
+.sub-header-publicar {
+    height: 40vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7)), url(../images/registro/inicio4.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.publicar-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.publicar-container h2 {
+    color: #2fc402;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #2fc402;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.file-upload-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.file-upload-group input[type="file"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+
+.file-upload-group select {
+    width: 150px;
+}
+
+.submit-btn {
+    padding: 12px 25px;
+    background: #2fc402;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #00810b;
+}
+
+.message-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+}
+
+.message-box.success {
+    background-color: #e6ffe6;
+    color: #00810b;
+    border: 1px solid #2fc402;
+}
+
+.message-box.error {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #ff0000;
+}
+
+@media (max-width: 600px) {
+    .file-upload-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .file-upload-group select {
+        width: 100%;
+    }
+}

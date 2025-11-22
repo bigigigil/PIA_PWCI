@@ -38,7 +38,6 @@
     display: block;
 }
 
-/* Content Area */
 .content-area {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -48,7 +47,7 @@
 
 .tab-container {
     max-width: 900px;
-    margin: 20px auto 0 auto; /* Más margen arriba para separarlo del título */
+    margin: 20px auto 0 auto; 
 }
 
 .tabs {
@@ -56,7 +55,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    border-bottom: 2px solid #ddd; /* Línea de base para las pestañas */
+    border-bottom: 2px solid #ddd; 
 }
 
 .tabs li {
@@ -71,8 +70,8 @@
     color: #6c757d;
     font-weight: 600;
     transition: color 0.3s, border-bottom 0.3s;
-    border-bottom: 2px solid transparent; /* Para evitar saltos de diseño */
-    margin-bottom: -2px; /* Superpone el borde de la lista */
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; 
     font-family: 'Poppins', sans-serif;
 }
 
@@ -82,7 +81,7 @@
 
 .tab-link.active {
     color: #00942c;
-    border-bottom: 2px solid #00ff22; /* Resalta la pestaña activa */
+    border-bottom: 2px solid #00ff22; 
     font-weight: 700;
 }
 
@@ -119,7 +118,6 @@
     color: var(--fifa-blue);
 }
 
-/* Admin Sections */
 .admin-section {
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -162,7 +160,6 @@
     background-color: #00b30f;
 }
 
-/* Tables */
 .admin-section {
     max-width: 900px;
     margin: 20px auto;
@@ -232,21 +229,20 @@
 }
 
 .status-active {
-    background-color: #e6f7ee; /* Verde muy claro */
-    color: #28a745; /* Verde */
+    background-color: #e6f7ee; 
+    color: #28a745;
 }
 
 .status-inactive {
-    background-color: #fbe6e7; /* Rojo muy claro */
-    color: #dc3545; /* Rojo */
+    background-color: #fbe6e7; 
+    color: #dc3545; 
 }
 
 .status-pending {
-    background-color: #fff9e6; /* Amarillo muy claro */
-    color: #ffc107; /* Amarillo */
+    background-color: #fff9e6; 
+    color: #ffc107; 
 }
 
-/* Botones de Acción de la Tabla */
 .table-actions {
     white-space: nowrap;
 }
@@ -267,8 +263,6 @@
     color: #333;
     background-color: #f0f0f0;
 }
-
-/* Configure*/
 
 .settings-container {
     max-width: 900px;
@@ -313,14 +307,14 @@
 .settings-section .section-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #14aa00; /* Color primario */
+    color: #14aa00; 
     display: flex;
     align-items: center;
     margin: 0;
 }
 
 .section-icon {
-    background-color: #e6f0ff; /* Fondo claro para el icono */
+    background-color: #e6f0ff; 
     color: #00ff2a;
     padding: 8px;
     border-radius: 6px;
@@ -335,7 +329,7 @@
 
 .form-group {
     margin-bottom: 20px;
-    flex: 1; /* Permite que los grupos de formulario crezcan en el .settings-form */
+    flex: 1; 
 }
 
 .form-group label {
@@ -440,9 +434,6 @@
     margin-top: 3px;
 }
 
-
-
-/* Zona Peligrosa (Danger Zone) */
 .danger-zone {
     border: 1px solid #ff0000;
     background-color: #fff0f0;
@@ -450,7 +441,7 @@
 }
 
 .danger-zone .section-title {
-    color: #dc3545; /* Rojo de peligro */
+    color: #dc3545;
 }
 
 .danger-zone .section-icon {
@@ -488,7 +479,7 @@
     }
 
     .settings-form {
-        flex-direction: column; /* Apila los grupos de formulario en móvil */
+        flex-direction: column; 
         gap: 0;
     }
     
@@ -499,11 +490,10 @@
     }
     
     .btn {
-        width: 48%; /* Hace que los botones sean casi la mitad del ancho */
+        width: 48%; 
     }
 }
 
-/* Responsive */
 @media (max-width: 900px) {
     .main-content {
         grid-template-columns: 1fr;
@@ -533,4 +523,55 @@
         width: 100%;
         justify-content: space-between;
     }
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); 
+    backdrop-filter: blur(5px); /* Efecto borroso bonito */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 500px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-content .form-group input,
+.modal-content .form-group select {
+    margin-bottom: 15px;
 }

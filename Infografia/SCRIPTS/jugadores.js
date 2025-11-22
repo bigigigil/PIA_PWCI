@@ -49,7 +49,6 @@ const players = {
     }
 };
 
-// Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById("playerModal");
     const modalName = document.getElementById("modalName");
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.querySelector(".close");
     const videoIframe = document.getElementById("modalVideo");
 
-    // Abrir modal
     document.querySelectorAll(".card .product").forEach(card => {
         card.addEventListener("click", function () {
             const name = this.querySelector(".sneakers").textContent.trim();
@@ -72,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Cerrar modal
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
         if (videoIframe) {
@@ -80,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Cerrar al hacer clic fuera
     window.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.style.display = "none";

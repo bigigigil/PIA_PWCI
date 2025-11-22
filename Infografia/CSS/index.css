@@ -6,7 +6,7 @@
   background-size: cover;
   position: relative;
 }
-/* course */
+
 .course {
   width: 80%;
   margin: auto;
@@ -54,13 +54,17 @@ h3 {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
-@media(max-width:700) {
+/* MODIFICACIÓN: La consulta de medios anterior era incorrecta.
+   Esta nueva consulta hace que la sección .course se apile verticalmente
+   en pantallas de 700px o menos. */
+@media (max-width: 1000px) {
   .row {
     flex-direction: column;
   }
+  .course-col {
+    flex-basis: 100%; /* Ocupa todo el ancho al apilarse */
+  }
 }
-
-/*Part2*/
 
 .ParteDos {
   width: 80%;
@@ -114,7 +118,6 @@ h3 {
   bottom: 49%;
   opacity: 1;
 }
-/*Parte4*/
 
 .ParteCuatro {
   text-align: center;
@@ -209,7 +212,6 @@ h3 {
   opacity: 1;
 }
 
-/* 🔥 Animación del gradiente de fondo */
 @keyframes gradientBG {
   0% {
     background-position: 0% 50%;
